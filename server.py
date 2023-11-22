@@ -6,42 +6,50 @@ from _thread import *
 # By Group 3 (Alan Lei, Julian Bucio, Juan Carrera Bravo, Raj Pannu, Shaquan Carolina)
 # Sacramento State November 22 2023
 # CSC 138 Section 06 
-#hello
-# testing
+
+MaxNumberOfClients = 10
+
 def create_server(port):
     svr_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     svr_socket.bind(("0.0.0.0", port))
     # Handles up to 10 connections
-    svr_socket.listen(10)
-    list_of_clients = []
-    client_usernames = []
-    join()
+    svr_socket.listen();
+    
     while True:
-        threading.Thread(target=)
+        client_socket, address = svr_socket.accept()
+        print(f"Accepted connection from {address}")
+        threading.Thread(target=handle_client, args=(client_socket, address)).start()
+    
 
-def checkInput():
-     commands = [
-          "JOIN"
-          "LIST"
-          "MESG"
-          "BCST"
-          "QUIT"
-     ]
-    #test 123
-     user_input = input("")
+def join(client_socket,parts):
 
-     if user_input in commands:
-          print(f"" {user_})
-          
-     
 
-def join():
-    while True:
-        request = input("Enter JOIN followed by your username: ")
-        if(request.lower().startswith("join")):
-            return request
-        else:
-            print("Please try again.")
+
+def handle_request(client_socket, request):
+    parts = request.split()
+    command = parts[0].upper()
+
+    match command:
+        case "JOIN":
+            join(client_socket, parts)
+        case "LIST":
+            listM(client_socket)
+        case "MESG":
+            mesg(client_socket, parts)
+        case "BCST":
+            bcst(client_socket, parts)
+        case "QUIT":
+            quitSvr(clientsocket)
+        case :
+            send_response(client_socket, "Unknown Message")
+
+
+
+def handle_unknown(client_socket, parts):
+    send_response(client_socket, "Unknown Message"   
+
+
+
 
 
 def clientthread(conn, addr): 
@@ -68,6 +76,9 @@ while True:
             except: 
                 continue    
 
+
+
+
 def broadcast(message, connection): 
     create_server()
     for clients in list_of_clients: 
@@ -78,6 +89,10 @@ def broadcast(message, connection):
                 clients.close() 
                 # if the link is broken, we remove the client 
                 remove(clients)
+
+
+
+
 def main():
     try:
         if len(sys.argv) != 2:
