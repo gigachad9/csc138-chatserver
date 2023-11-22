@@ -26,7 +26,7 @@ def checkInput():
           "BCST"
           "QUIT"
      ]
-
+    #test 123
      user_input = input("")
 
      if user_input in commands:
