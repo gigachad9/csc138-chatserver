@@ -14,7 +14,8 @@ def handle_client(client_socket, client_address):
     command_directory = {
         "join": handle_join,
         "list": handle_list,
-        "bcst": handle_bcst
+        "bcst": handle_bcst,
+        "mesg": handle_mesg
     }
     
     #this is the message that will be sent to the user the first time they connect 
