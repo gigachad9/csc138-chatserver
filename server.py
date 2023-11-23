@@ -102,10 +102,8 @@ def handle_list(client_socket):
 
 
 def handle_bcst(client_socket, username, message):
-    messparts = message.split(maxsplit=1)
-    mess = messparts[1]
-
-    bcst_message = (f"{username}: {mess}")
+    print(message)
+    bcst_message = (f"{username}: {message[5:]}")
     for user, client in clients.items():
         if user != username:
             client.send(bcst_message.encode())
