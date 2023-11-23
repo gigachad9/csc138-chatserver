@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="fixed directory" />
+    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="fixed list command">
+      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +107,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700724660305</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fixed list command">
+      <created>1700725234932</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1700725234932</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -115,6 +124,7 @@
     <MESSAGE value="handle_mesg work in progess" />
     <MESSAGE value="handle_mesg finished" />
     <MESSAGE value="fixed directory" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed directory" />
+    <MESSAGE value="fixed list command" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed list command" />
   </component>
 </project>

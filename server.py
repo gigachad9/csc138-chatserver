@@ -71,7 +71,10 @@ def handle_join(client_socket, username, message):
     else:
         #client registered to client dictionary
         clients[requested_username] = client_socket
-        
+
+        client_ip, client_port = client_socket.getpeername()
+        print(f"Connected with {client_ip}, {client_port}")
+
         join_message = (f"{requested_username} joined!")
         for user, client in clients.items():
             if user != requested_username:
