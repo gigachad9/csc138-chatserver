@@ -17,12 +17,10 @@ def receive_messages(client_socket):
 
 def create_client(svr_ip, svr_port):
 
-    host = '127.0.0.1'  # The server's hostname or IP address
-    port = 12345        # The port used by the server
 
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        client_socket.connect((host, port))
+        client_socket.connect((svr_ip,svr_port))
     except Exception as e:
         print(f"Failed to connect to the server: {e}")
         sys.exit(1)
@@ -48,10 +46,11 @@ def create_client(svr_ip, svr_port):
         print("Disconnecting from server...")
         client_socket.close()
 
+
 def main():
     if len(sys.argv)!= 3:
-        print("Usage: python client. py < server_ip> < server_port>")
-        sys. exit (1)
+        print("Usage:python client.py < server_ip> < server_port>")
+        sys.exit (1)
                            
     svr_ip = sys.argv[1]
     svr_port = int(sys.argv[2])
