@@ -103,13 +103,16 @@ def handle_list(client_socket):
 
 def handle_bcst(client_socket, username, message):
     print(message)
-    parts = message.split(maxsplit=1)
+    broadcast_message = message[len('bcst '):]
 
-    bcst_message = f"{username}: {parts[1]}"
+    message_for_everyone = f"{username}: {broadcast_message}"
+    message_for_sender = f"{username} is sending a broadcast"
 
-    for user, client in clients.items():
-        if user != username:
-            client.send(bcst_message.encode())
+    for userr, client in clients.items():
+        if userr == username:
+            client.send(message_for_sender.encode())
+
+        client.send(message_for_everyone.encode())
 
 
 
