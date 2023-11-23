@@ -35,13 +35,13 @@ def handle_client(client_socket, client_address):
                 username = handle_join(client_socket, username, message)
             #checks if registered
             elif username:
-                if command in command_directory:
-                    command_directory[command](client_socket, username, ' '.join(split_message[1:]))
-                elif command == "quit":
+                if command == "quit":
                     #go to finally block to handle QUIT command
                     break
                 elif command == "list":
                     command_directory[command](client_socket)
+                elif command in command_directory:
+                    command_directory[command](client_socket, username, ' '.join(split_message[1:]))
                 #send unknown message to client if command isn't known
                 else:
                     client_socket.send("Unknown Message".encode())
