@@ -52,7 +52,7 @@ def handle_client(client_socket, client_address):
     finally:
         if username:
             for client in clients.values():
-                client.send(f"{username} left")
+                client.send(f"{username} left".encode())
             del clients[username]
             print(f"{username} is quitting the chat server")
         client_socket.close()
