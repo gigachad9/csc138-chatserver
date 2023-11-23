@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="handle_mesg work in progess" />
+    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="handle_mesg finished" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700723737505</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="handle_mesg finished">
+      <created>1700724287282</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1700724287282</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -99,6 +106,7 @@
     <MESSAGE value="bcst method added" />
     <MESSAGE value="moved code around" />
     <MESSAGE value="handle_mesg work in progess" />
-    <option name="LAST_COMMIT_MESSAGE" value="handle_mesg work in progess" />
+    <MESSAGE value="handle_mesg finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="handle_mesg finished" />
   </component>
 </project>
