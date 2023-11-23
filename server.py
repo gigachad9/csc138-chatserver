@@ -39,6 +39,7 @@ def handle_client(client_socket, client_address):
                 elif command == "quit":
                     #go to finally block to handle QUIT command
                     break
+                #send unknown message to client if command isn't known
                 else:
                     client_socket.send("Unknown Message".encode())
             else:
@@ -128,6 +129,7 @@ def main():
     except Exception as e:
         print(f"An error occurred: {e}")
         sys.exit()
+
 
 if __name__ == "__main__":
     main()
