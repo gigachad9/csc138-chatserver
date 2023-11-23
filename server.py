@@ -5,18 +5,27 @@ import threading
 MAX_CLIENTS = 10
 clients = {}
 
-def handle_client(client_socket, client_address):
+# Manages communication with the client
+# parameters inlcude the client socket and client address
+def handle_client(client_socket, client_address): 
+    #this will hold a username
     username = None
+    #this is dicitionary to hold the commands they point to handle join function and handle list function
     command_directory = {
         "JOIN": handle_join,
         "LIST": handle_list,
         "BCST": handle_bcst
     }
     
+    #this is the message that will be sent to the user the first time they connect 
     welcome_message = "Enter JOIN followed by your username "
+
+    #send a message to the client over the socket connection 
     client_socket.send(welcome_message.encode())
     
+    #try block to catch any exceptions that can happen
     try:
+        #infinite loop
         while True:
             message = client_socket.recv(1024).decode()
             command = message.split()[0]
