@@ -63,7 +63,7 @@ def handle_join(client_socket, username, message):
                 client.send(join_message.encode())
                 
         welcome_mess2 = (f"{requested_username} joined! Connected to server!")
-        client_socket.send(welcome_message.encode())
+        client_socket.send(welcome_mess2.encode())
         
         return requested_username
     return None
@@ -93,7 +93,7 @@ def create_server(svr_port):
             thread = threading.Thread(target=handle_client, args=(client_socket, client_address))
             thread.start()
     finally:
-        server_socket.close()
+        svr_socket.close()
         
         
         
