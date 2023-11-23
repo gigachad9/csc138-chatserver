@@ -1,3 +1,7 @@
+# CSC 138 Project - Section 06
+# Members: Raj Pannu, Julain Bucio, Juan Carrera Bravo, 
+#          Shaquan Carolina, Alan Lei
+# Python chat room project that is connects various clients with each other while letting the user choose in what way they wish to interact.
 import socket
 import sys
 import threading
@@ -6,11 +10,11 @@ MAX_CLIENTS = 10
 clients = {}
 
 # Manages communication with the client
-# parameters inlcude the client socket and client address
+# Parameters inlcude the client socket and client address
 def handle_client(client_socket, client_address): 
-    #this will hold a username
+    #This will hold a username
     username = None
-    #this is dicitionary to hold the commands they point to handle join function and handle list function
+    #This is dicitionary to hold the commands they point to handle join function and handle list function
     command_directory = {
         "join": handle_join,
         "list": handle_list,
@@ -18,14 +22,14 @@ def handle_client(client_socket, client_address):
         "mesg": handle_mesg
     }
     
-    #this is the message that will be sent to the user the first time they connect 
+    #This is the message that will be sent to the user the first time they connect
     welcome_message = "Enter JOIN followed by your username "
-    #send a message to the client over the socket connection 
+    #Send a message to the client over the socket connection 
     client_socket.send(welcome_message.encode())
     
-    #try block to catch any exceptions that can happen
+    #Try block to catch any exceptions that can happen
     try:
-        #infinite loop
+        #Infinite loop
         while True:
             message = client_socket.recv(1024).decode()
             split_message = message.split()
@@ -33,22 +37,22 @@ def handle_client(client_socket, client_address):
             
             if command == "join":
                 username = handle_join(client_socket, username, message)
-            #checks if registered
+            #Checks if registered
             elif username:
                 if command == "quit":
-                    #go to finally block to handle QUIT command
+                    #Go to finally block to handle QUIT command
                     break
                 elif command == "list":
                     command_directory[command](client_socket)
                 elif command in command_directory:
                     command_directory[command](client_socket, username, ' '.join(split_message[1:]))
-                #send unknown message to client if command isn't known
+                #Send Unknown Message to client if the command isn't known
                 else:
                     client_socket.send("Unknown Message".encode())
-            #if client not registered send message
+            #If the client is not registered, send message
             else:
                 client_socket.send("You must register to chat".encode())
-    #handle QUIT command            
+    #Handle QUIT command            
     finally:
         if username:
             for client in clients.values():
@@ -56,10 +60,7 @@ def handle_client(client_socket, client_address):
             del clients[username]
             print(f"{username} is quitting the chat server")
         client_socket.close()
-            
-
-
-
+# Registers a client with specified username, as well as checking size and if username already exists
 def handle_join(client_socket, username, message):
     if username:
         client_socket.send("You are already registered".encode())
@@ -71,7 +72,7 @@ def handle_join(client_socket, username, message):
     elif requested_username in clients:
         client_socket.send("Username taken".encode())
     else:
-        #client registered to client dictionary
+        #Client registered to client dictionary
         clients[requested_username] = client_socket
 
         client_ip, client_port = client_socket.getpeername()
@@ -88,16 +89,12 @@ def handle_join(client_socket, username, message):
         return requested_username
     return None
 
-
-
-
+# Sends a list of registed clients
 def handle_list(client_socket):
     list_message = "\n".join(clients.keys())
     client_socket.send(list_message.encode())
 
-
-
-
+# Sends a message to all registered clients
 def handle_bcst(client_socket, username, message):
     print(message) #test purposes delete later
     broadcast_message = message
@@ -111,9 +108,7 @@ def handle_bcst(client_socket, username, message):
 
         client.send(message_for_everyone.encode('utf-8'))
 
-
-
-
+# Handles messanging by checking to see if it meets the specified number of arguments
 def handle_mesg(client_socket, username, message):
     #checks if there are enough args
     #gives error if there are less than 3 args
@@ -129,10 +124,7 @@ def handle_mesg(client_socket, username, message):
     else:
         client_socket.send("Unknown recipient.".encode())
         return
-
-
-
-
+# Creates chat server with specified port, it accepts incoming connections
 def create_server(svr_port):
     svr_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     svr_socket.bind(("0.0.0.0", svr_port))
@@ -140,34 +132,34 @@ def create_server(svr_port):
     
     hostname = socket.gethostname()
     svr_ip = socket.gethostbyname(hostname)
+#   Prints IP
     print(f"The Chat Server Started on {svr_ip}:{svr_port}")
     
     try:
         while True:
+        #   Creates a new thread for each user connected
             client_socket, client_address = svr_socket.accept()
             thread = threading.Thread(target=handle_client, args=(client_socket, client_address))
             thread.start()
     finally:
         svr_socket.close()
 
-
-
-#main function that deals with system arugments
+#Main function that deals with system arugments
 def main():
     try:
-        #checks if system arugments don't equal 2
+        #Checks if system arugments don't equal 2
         if len(sys.argv) != 2:
             print("Usage: python3 server.py <srv_port>")
             sys.exit()
-            #checks if port number is less than 65536
+            #Checks if port number is less than 65536
         if int(sys.argv[1]) < 65536:
             svr_port = int(sys.argv[1])
             create_server(svr_port)
-    #exception
+    #Exception
     except Exception as e:
         print(f"An error occurred: {e}")
         sys.exit()
 
-#makes sure program is running as main
+#Makes sure program is running as main
 if __name__ == "__main__":
     main()
