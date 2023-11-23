@@ -40,6 +40,8 @@ def handle_client(client_socket, client_address):
                 elif command == "quit":
                     #go to finally block to handle QUIT command
                     break
+                elif command == "list":
+                    command_directory[command](client_socket)
                 #send unknown message to client if command isn't known
                 else:
                     client_socket.send("Unknown Message".encode())
