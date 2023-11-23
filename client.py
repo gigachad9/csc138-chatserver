@@ -15,7 +15,8 @@ def receive_messages(client_socket):
             print(f"Error receiving message: {e}")
             break
 
-def main():
+def create_client(svr_ip, svr_port):
+
     host = '127.0.0.1'  # The server's hostname or IP address
     port = 12345        # The port used by the server
 
@@ -46,6 +47,15 @@ def main():
     finally:
         print("Disconnecting from server...")
         client_socket.close()
+
+def main():
+    if len(sys.argv)!= 3:
+        print("Usage: python client. py < server_ip> < server_port>")
+        sys. exit (1)
+                           
+    svr_ip = sys.argv[1]
+    svr_port = int(sys.argv[2])
+    create_client (svr_ip,svr_port)
 
 if __name__ == "__main__":
     main()
