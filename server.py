@@ -42,6 +42,7 @@ def handle_client(client_socket, client_address):
                 #send unknown message to client if command isn't known
                 else:
                     client_socket.send("Unknown Message".encode())
+            #if client not registered send message
             else:
                 client_socket.send("You must register to chat".encode())
     #handle QUIT command            
@@ -129,19 +130,22 @@ def create_server(svr_port):
 
 
 
-
+#main function that deals with system arugments
 def main():
     try:
+        #checks if system arugments don't equal 2
         if len(sys.argv) != 2:
             print("Usage: python3 server.py <srv_port>")
             sys.exit()
+            #checks if port number is less than 65536
         if int(sys.argv[1]) < 65536:
             svr_port = int(sys.argv[1])
             create_server(svr_port)
+    #exception
     except Exception as e:
         print(f"An error occurred: {e}")
         sys.exit()
 
-
+#makes sure program is running as main
 if __name__ == "__main__":
     main()
