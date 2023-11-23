@@ -79,6 +79,15 @@ def handle_list(client_socket):
 
 
 
+def handle_bcst(client_socket, username, message):
+    bcst_message = (f"{username}: {message[5:]}")
+    for user, client in clients.items():
+        if user != username:
+            client.send(bcst_message.encode())
+
+
+
+
 def create_server(svr_port):
     svr_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     svr_socket.bind(("0.0.0.0", svr_port))
@@ -96,14 +105,6 @@ def create_server(svr_port):
     finally:
         svr_socket.close()
 
-
-
-
-def handle_bcst(client_socket, username, message):
-    bcst_message = (f"{username}: {message[5:]}")
-    for user, client in clients.items():
-        if user != username:
-            client.send(bcst_message.encode())
 
 
 

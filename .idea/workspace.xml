@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="test">
+    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="bcst method added">
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -64,11 +64,19 @@
       <option name="project" value="LOCAL" />
       <updated>1700718637822</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="bcst method added">
+      <created>1700719693660</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1700719693660</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="bcst method added" />
+    <option name="LAST_COMMIT_MESSAGE" value="bcst method added" />
   </component>
 </project>
