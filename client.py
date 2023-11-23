@@ -44,7 +44,7 @@ def create_client(svr_ip, svr_port):
                 break
     finally:
         print("Disconnecting from server...")
-        client_socket.close()
+        sys.exit(1)
 
 
 def main():
