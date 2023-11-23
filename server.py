@@ -51,11 +51,8 @@ def handle_client(client_socket, client_address):
     #handle QUIT command            
     finally:
         if username:
-            quit_message = (f"{username} is qutting the chat server")
             for client in clients.values():
-                if client != client.socket: #send message to everyone but leaving user
-                    client.send(quit_message.encode())
-
+                client.send(f"{username} left")
             del clients[username]
             print(f"{username} is quitting the chat server")
         client_socket.close()
@@ -109,8 +106,8 @@ def handle_bcst(client_socket, username, message):
     message_for_sender = f"{username} is sending a broadcast"
 
     for userr, client in clients.items():
-        #if userr == username:
-        #    client.send(message_for_sender.encode('utf-8'))
+        if userr == username:
+            client.send(message_for_sender.encode('utf-8'))
 
         client.send(message_for_everyone.encode('utf-8'))
 
