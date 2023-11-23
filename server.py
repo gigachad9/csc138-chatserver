@@ -1,107 +1,114 @@
-from multiprocessing import connection
 import socket
-import select
 import sys
-from _thread import *
-# By Group 3 (Alan Lei, Julian Bucio, Juan Carrera Bravo, Raj Pannu, Shaquan Carolina)
-# Sacramento State November 22 2023
-# CSC 138 Section 06 
+import threading
 
-MaxNumberOfClients = 10
+MAX_CLIENTS = 10
+clients = {}
 
-def create_server(port):
+def handle_client(client_socket, client_address):
+    username = None
+    command_directory = {
+        "JOIN": handle_join,
+        "LIST": handle_list
+    }
+    
+    welcome_message = "Enter JOIN followed by your username "
+    client_socket.send(welcome_message.encode())
+    
+    try:
+        while True:
+            message = client_socket.recv(1024).decode()
+            command = message.split()[0]
+            
+            if command == "JOIN":
+                username = handle_join(client_socket, username, message)
+            #checks if registered
+            elif username:
+                if command in command_directory:
+                    command_directory[command](client_socket)
+                elif command == "QUIT":
+                    #go to finally block to handle QUIT command
+                    break
+                else:
+                    client_socket.send("Unknown Message".encode())
+            else:
+                client_socket.send("You must register to chat".encode())
+    #handle QUIT command            
+    finally:
+        if username:
+            del clients[username]
+            print(f"{username} is quitting the chat server")
+        client_socket.close()
+            
+
+
+
+def handle_join(client_socket, username, message):
+    if username:
+        client_socket.send("You are already registered".encode())
+        return username
+    
+    requested_username = message.split()[1]
+    if len(clients) >= MAX_CLIENTS:
+        client_socket.send("Too Many Users".encode())
+    elif requested_username in clients:
+        client_socket.send("Username taken".encode())
+    else:
+        #client registered to client dictionary
+        clients[requested_username] = client_socket
+        
+        join_message = (f"{requested_username} joined!")
+        for user, client in clients.items():
+            if user != requested_username:
+                client.send(join_message.encode())
+                
+        welcome_mess2 = (f"{requested_username} joined! Connected to server!")
+        client_socket.send(welcome_message.encode())
+        
+        return requested_username
+    return None
+
+
+
+
+def handle_list(client_socket):
+    list_message = "\n".join(clients.keys())
+    client_socket.send(list_message.encode())
+
+
+
+
+def create_server(svr_port):
     svr_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    svr_socket.bind(("0.0.0.0", port))
-    # Handles up to 10 connections
-    svr_socket.listen();
+    svr_socket.bind(("0.0.0.0", svr_port))
+    svr_socket.listen()
     
-    while True:
-        client_socket, address = svr_socket.accept()
-        print(f"Accepted connection from {address}")
-        threading.Thread(target=handle_client, args=(client_socket, address)).start()
+    hostname = socket.gethostname()
+    svr_ip = socket.gethostbyname(hostname)
+    print(f"The Chat Server Started on {svr_ip}:{svr_port}")
     
-
-def join(client_socket,parts):
-
-
-
-def handle_request(client_socket, request):
-    parts = request.split()
-    command = parts[0].upper()
-
-    match command:
-        case "JOIN":
-            join(client_socket, parts)
-        case "LIST":
-            listM(client_socket)
-        case "MESG":
-            mesg(client_socket, parts)
-        case "BCST":
-            bcst(client_socket, parts)
-        case "QUIT":
-            quitSvr(clientsocket)
-        case :
-            send_response(client_socket, "Unknown Message")
-
-
-
-def handle_unknown(client_socket, parts):
-    send_response(client_socket, "Unknown Message"   
-
-
-
-
-
-def clientthread(conn, addr): 
-    # Sends a message to the client whose user object is connected
-        request = input("Enter JOIN followed by your username: ")
-        if(request.lower() == "JOIN")
-
-    #thread = threading.Thread(target=clientthread, args=(conn, addr))
-while True: 
-            try: 
-                message = connection.recv(2048) 
-                if message: 
-                    """prints the message and address of the 
-                    user who just sent the message on the server 
-                    terminal"""
-                    print ("<" + addr[0] + "> " + message) 
-                    # Calls broadcast function to send message to all 
-                    message_to_send = "<" + addr[0] + "> " + message 
-                    broadcast(message_to_send, conn) 
-                else: 
-                    """message may have no content if the connection 
-                    is broken, in this case we remove the connection"""
-                    remove(conn)
-            except: 
-                continue    
-
-
-
-
-def broadcast(message, connection): 
-    create_server()
-    for clients in list_of_clients: 
-        if clients!=connection: 
-            try: 
-                clients.send(message) 
-            except: 
-                clients.close() 
-                # if the link is broken, we remove the client 
-                remove(clients)
-
-
-
-
+    try:
+        while True:
+            client_socket, client_address = svr_socket.accept()
+            thread = threading.Thread(target=handle_client, args=(client_socket, client_address))
+            thread.start()
+    finally:
+        server_socket.close()
+        
+        
+        
+        
 def main():
     try:
         if len(sys.argv) != 2:
-            print("Usage: python server.py <srv_port>")
-            sys.exit(1)
-        svr_port = int(sys.argv[1])
-        create_server(svr_port)
+            print("Usage: python3 server.py <srv_port>")
+            sys.exit()
+        if int(sys.argv[1]) < 65536:
+            svr_port = int(sys.argv[1])
+            create_server(svr_port)
     except Exception as e:
-        print("Error, please try again!")
-        sys.exit(1)
+        print(f"An error occurred: {e}")
+        sys.exit()
+
 if __name__ == "__main__":
     main()
