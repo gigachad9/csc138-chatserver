@@ -99,7 +99,7 @@ def handle_list(client_socket):
 
 
 def handle_bcst(client_socket, username, message):
-    print(message)
+    print(message) #test purposes delete later
     broadcast_message = message
 
     message_for_everyone = f"{username}: {broadcast_message}"
@@ -115,6 +115,13 @@ def handle_bcst(client_socket, username, message):
 
 
 def handle_mesg(client_socket, username, message):
+    #checks if there are enough args
+    #gives error if there are less than 3 args
+    messparts = message.split(maxsplit=1)
+    if len(messparts) < 2:
+        client_socket.send("Invalid usage. Use MESG <username> <message>".encode())
+        return
+
     target_username, target_message = message.split(maxsplit=1)
 
     if target_username in clients:
