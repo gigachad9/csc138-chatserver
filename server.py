@@ -9,7 +9,8 @@ def handle_client(client_socket, client_address):
     username = None
     command_directory = {
         "JOIN": handle_join,
-        "LIST": handle_list
+        "LIST": handle_list,
+        "BCST": handle_bcst
     }
     
     welcome_message = "Enter JOIN followed by your username "
@@ -25,7 +26,7 @@ def handle_client(client_socket, client_address):
             #checks if registered
             elif username:
                 if command in command_directory:
-                    command_directory[command](client_socket)
+                    command_directory[command](client_socket, username, message)
                 elif command == "QUIT":
                     #go to finally block to handle QUIT command
                     break
@@ -94,10 +95,18 @@ def create_server(svr_port):
             thread.start()
     finally:
         svr_socket.close()
-        
-        
-        
-        
+
+
+
+
+def handle_bcst(client_socket, username, message):
+    bcst_message = (f"{username}: {message[5:]}")
+    for user, client in clients.items():
+        if user != username:
+            client.send(bcst_message.encode())
+
+
+
 def main():
     try:
         if len(sys.argv) != 2:
