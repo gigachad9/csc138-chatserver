@@ -12,14 +12,13 @@ def handle_client(client_socket, client_address):
     username = None
     #this is dicitionary to hold the commands they point to handle join function and handle list function
     command_directory = {
-        "JOIN": handle_join,
-        "LIST": handle_list,
-        "BCST": handle_bcst
+        "join": handle_join,
+        "list": handle_list,
+        "bcst": handle_bcst
     }
     
     #this is the message that will be sent to the user the first time they connect 
     welcome_message = "Enter JOIN followed by your username "
-
     #send a message to the client over the socket connection 
     client_socket.send(welcome_message.encode())
     
@@ -28,15 +27,16 @@ def handle_client(client_socket, client_address):
         #infinite loop
         while True:
             message = client_socket.recv(1024).decode()
-            command = message.split()[0]
+            split_message = message.split()
+            command = split_message[0].lower()
             
-            if command == "JOIN":
+            if command == "join":
                 username = handle_join(client_socket, username, message)
             #checks if registered
             elif username:
                 if command in command_directory:
-                    command_directory[command](client_socket, username, message)
-                elif command == "QUIT":
+                    command_directory[command](client_socket, username, ' '.join(split_message[1:]))
+                elif command == "quit":
                     #go to finally block to handle QUIT command
                     break
                 else:
