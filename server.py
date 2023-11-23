@@ -107,6 +107,12 @@ def handle_mesg(client_socket, username, message):
         client_socket.send("Invalid usage. Use MESG <username> <message>".encode())
         return
 
+    target_username = messparts[1]
+    target_message = messparts[2]
+    if target_username in clients:
+        clients[target_username].send(f"{username}")
+    else:
+        client_socket.send("Unknown recipient.".encode())
 
 
 
