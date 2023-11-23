@@ -110,9 +110,9 @@ def handle_bcst(client_socket, username, message):
 
     for userr, client in clients.items():
         if userr == username:
-            client.send(message_for_sender.encode())
+            client.send(message_for_sender.encode('utf-8'))
 
-        client.send(message_for_everyone.encode())
+        client.send(message_for_everyone.encode('utf-8'))
 
 
 
