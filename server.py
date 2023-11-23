@@ -51,6 +51,11 @@ def handle_client(client_socket, client_address):
     #handle QUIT command            
     finally:
         if username:
+            quit_message = (f"{username} is qutting the chat server")
+            for client in clients.values():
+                if client != client.socket: #send message to everyone but leaving user
+                    client.send(quit_message.encode())
+
             del clients[username]
             print(f"{username} is quitting the chat server")
         client_socket.close()

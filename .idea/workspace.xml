@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="fixed list command">
+    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="now fixed list">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +115,21 @@
       <option name="project" value="LOCAL" />
       <updated>1700725234932</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="server ip message">
+      <created>1700725670363</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1700725670363</updated>
+    </task>
+    <task id="LOCAL-00012" summary="now fixed list">
+      <created>1700726056229</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1700726056229</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -125,6 +140,8 @@
     <MESSAGE value="handle_mesg finished" />
     <MESSAGE value="fixed directory" />
     <MESSAGE value="fixed list command" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed list command" />
+    <MESSAGE value="server ip message" />
+    <MESSAGE value="now fixed list" />
+    <option name="LAST_COMMIT_MESSAGE" value="now fixed list" />
   </component>
 </project>
