@@ -98,6 +98,18 @@ def handle_bcst(client_socket, username, message):
 
 
 
+def handle_mesg(client_socket, username, message):
+    #checks if there are enough args
+    #gives error if there are less than 3 args
+    messparts = message.split(maxsplit=2)
+    if len(messparts) < 3:
+        client_socket.send("Invalid usage. Use MESG <username> <message>".encode())
+        return
+
+
+
+
+
 def create_server(svr_port):
     svr_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     svr_socket.bind(("0.0.0.0", svr_port))
