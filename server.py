@@ -103,14 +103,14 @@ def handle_list(client_socket):
 
 def handle_bcst(client_socket, username, message):
     print(message)
-    broadcast_message = message[len('bcst '):]
+    broadcast_message = message
 
     message_for_everyone = f"{username}: {broadcast_message}"
     message_for_sender = f"{username} is sending a broadcast"
 
     for userr, client in clients.items():
-        if userr == username:
-            client.send(message_for_sender.encode('utf-8'))
+        #if userr == username:
+        #    client.send(message_for_sender.encode('utf-8'))
 
         client.send(message_for_everyone.encode('utf-8'))
 
