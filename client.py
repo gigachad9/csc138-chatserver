@@ -34,7 +34,7 @@ def create_client(svr_ip, svr_port):
         while True:
             message = input("")
 
-            if message.lower() == "quit":
+            if message == "QUIT":
                 break
 
             try:

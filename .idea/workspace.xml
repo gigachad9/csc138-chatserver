@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="fixed mesg">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
-    </list>
+    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="Finished Server" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -297,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700836287092</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Finished Server">
+      <created>1700841812572</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1700841812572</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -312,7 +316,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="bcst method added" />
     <MESSAGE value="moved code around" />
     <MESSAGE value="handle_mesg work in progess" />
     <MESSAGE value="handle_mesg finished" />
@@ -337,6 +340,7 @@
     <MESSAGE value="close client socket when quitting" />
     <MESSAGE value="added way to handle ungraceful disconnects, moved QUIT back to finally" />
     <MESSAGE value="fixed mesg" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed mesg" />
+    <MESSAGE value="Finished Server" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished Server" />
   </component>
 </project>
