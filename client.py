@@ -8,7 +8,7 @@ def receive_messages(client_socket):
         try:
             message = client_socket.recv(1024).decode()
             if not message:
-                print("Disconnected from server.")
+                print("Error not message")
                 break
             print(message)
         except Exception as e:
@@ -44,6 +44,7 @@ def create_client(svr_ip, svr_port):
                 break
     finally:
         print("Disconnecting from server...")
+        client_socket.close()
         sys.exit(1)
 
 
