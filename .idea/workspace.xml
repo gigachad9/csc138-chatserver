@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="mesg args handling">
+    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="moved QUIT command out of registration check">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
@@ -220,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700735163586</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="moved QUIT command out of registration check">
+      <created>1700827333559</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1700827333559</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -240,6 +247,7 @@
     <MESSAGE value="bcst changes" />
     <MESSAGE value="quit changes" />
     <MESSAGE value="mesg args handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="mesg args handling" />
+    <MESSAGE value="moved QUIT command out of registration check" />
+    <option name="LAST_COMMIT_MESSAGE" value="moved QUIT command out of registration check" />
   </component>
 </project>
