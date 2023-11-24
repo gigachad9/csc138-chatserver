@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="split long comments into two lines&#10;&#10;Changed elifs in handle_client">
+    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="added args check for JOIN">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
@@ -241,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700829435241</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="remove unwanted variable, removed first 5 chars in bcst command, moved quit from finally to elif">
+      <created>1700831527234</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1700831527234</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -275,6 +282,8 @@
     <MESSAGE value="moved QUIT command out of registration check" />
     <MESSAGE value="Changed elifs in handle_client, &#10;split long comments into two lines" />
     <MESSAGE value="split long comments into two lines&#10;&#10;Changed elifs in handle_client" />
-    <option name="LAST_COMMIT_MESSAGE" value="split long comments into two lines&#10;&#10;Changed elifs in handle_client" />
+    <MESSAGE value="remove unwanted variable, removed first 5 chars in bcst command, moved quit from finally to elif" />
+    <MESSAGE value="added args check for JOIN" />
+    <option name="LAST_COMMIT_MESSAGE" value="added args check for JOIN" />
   </component>
 </project>
