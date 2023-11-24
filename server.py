@@ -36,18 +36,16 @@ def handle_client(client_socket, client_address):
         # Infinite loop
         while True:
             message = client_socket.recv(1024).decode()
+            if not message:
+                break
             split_message = message.split()
             command = split_message[0].lower()
 
             if command == "join":
                 username = handle_join(client_socket, username, message)
             elif command == "quit":
-                if username:
-                    for client in clients.values():
-                        client.send(f"{username} left".encode())
-                    del clients[username]
-                    print(f"{username} is quitting the chat server")
-                client_socket.close()
+                #go to finally block to handle QUIT command
+                break
             # Checks if registered
             elif username:
                 if command == "list":
@@ -63,7 +61,12 @@ def handle_client(client_socket, client_address):
             else:
                 client_socket.send("You must register to chat. JOIN <username>".encode())
     finally:
-        print(f"An error occurred")
+        if username:
+            for client in clients.values():
+                client.send(f"{username} left".encode())
+            del clients[username]
+            print(f"{username} is quitting the chat server")
+        client_socket.close()
 
 
 # Registers a client with specified username
