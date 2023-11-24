@@ -40,9 +40,6 @@ def handle_client(client_socket, client_address):
             command = split_message[0].lower()
 
             if command == "join":
-                split_join = message.split()
-                if len(split_join) != 2:
-                    client_socket.send("Usage: JOIN <username>".encode())
                 username = handle_join(client_socket, username, message)
             elif command == "quit":
                 if username:
@@ -64,9 +61,9 @@ def handle_client(client_socket, client_address):
                     client_socket.send("Unknown Message".encode())
             # If the client is not registered, send message
             else:
-                client_socket.send("You must register to chat".encode())
-    except Exception as e:
-        print(f"An error occurred: {e}")
+                client_socket.send("You must register to chat. JOIN <username>".encode())
+    finally:
+        print(f"An error occurred")
 
 
 # Registers a client with specified username
@@ -75,7 +72,12 @@ def handle_join(client_socket, username, message):
     if username:
         client_socket.send("You are already registered".encode())
         return username
-
+    #JOIN args check
+    split_message = message.split()
+    if len(split_message) != 2:
+        client_socket.send("Usage: JOIN <username>".encode())
+        return None
+    #number of clients check
     requested_username = message.split()[1]
     if len(clients) >= MAX_CLIENTS:
         client_socket.send("Too Many Users".encode())
@@ -179,3 +181,4 @@ def main():
 # Makes sure program is running as main
 if __name__ == "__main__":
     main()
+
