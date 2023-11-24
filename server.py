@@ -135,7 +135,7 @@ def handle_list(client_socket):
 # Sends a message to all registered clients
 def handle_bcst(username, message):
     #trim "bcst" from message
-    broadcast_message = message[5:]
+    broadcast_message = message
 
     message_for_everyone = f"{username}: {broadcast_message}"
     message_for_sender = f"{username} is sending a broadcast"

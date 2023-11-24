@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="Finished Server" />
+    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="fixed bug in QUIT, now finished">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -301,7 +304,21 @@
       <option name="project" value="LOCAL" />
       <updated>1700841812572</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="changed QUIT to case sensitive">
+      <created>1700842455644</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1700842455644</updated>
+    </task>
+    <task id="LOCAL-00039" summary="fixed bug in QUIT, now finished">
+      <created>1700842504451</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1700842504451</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -316,8 +333,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="moved code around" />
-    <MESSAGE value="handle_mesg work in progess" />
     <MESSAGE value="handle_mesg finished" />
     <MESSAGE value="fixed directory" />
     <MESSAGE value="fixed list command" />
@@ -341,6 +356,8 @@
     <MESSAGE value="added way to handle ungraceful disconnects, moved QUIT back to finally" />
     <MESSAGE value="fixed mesg" />
     <MESSAGE value="Finished Server" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished Server" />
+    <MESSAGE value="changed QUIT to case sensitive" />
+    <MESSAGE value="fixed bug in QUIT, now finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bug in QUIT, now finished" />
   </component>
 </project>
