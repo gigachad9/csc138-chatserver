@@ -14,7 +14,7 @@ clients = {}
 
 # Manages communication with the client
 # Parameters inlcude the client socket and client address
-def handle_client(client_socket, client_address):
+def handle_client(client_socket):
     # This will hold a username
     username = None
     # This is dicitionary to hold the commands
@@ -42,8 +42,12 @@ def handle_client(client_socket, client_address):
             if command == "join":
                 username = handle_join(client_socket, username, message)
             elif command == "quit":
-                # Go to finally block to handle QUIT command
-                break
+                if username:
+                    for client in clients.values():
+                        client.send(f"{username} left".encode())
+                    del clients[username]
+                    print(f"{username} is quitting the chat server")
+                client_socket.close()
             # Checks if registered
             elif username:
                 if command == "list":
@@ -58,14 +62,8 @@ def handle_client(client_socket, client_address):
             # If the client is not registered, send message
             else:
                 client_socket.send("You must register to chat".encode())
-    # Handle QUIT command
-    finally:
-        if username:
-            for client in clients.values():
-                client.send(f"{username} left".encode())
-            del clients[username]
-            print(f"{username} is quitting the chat server")
-        client_socket.close()
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 
 # Registers a client with specified username
@@ -108,7 +106,7 @@ def handle_list(client_socket):
 # Sends a message to all registered clients
 def handle_bcst(username, message):
     print(message)  # test purposes delete later
-    broadcast_message = message
+    broadcast_message = message[5:]
 
     message_for_everyone = f"{username}: {broadcast_message}"
     message_for_sender = f"{username} is sending a broadcast"
