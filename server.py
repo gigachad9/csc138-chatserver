@@ -37,12 +37,13 @@ def handle_client(client_socket, client_address):
             
             if command == "join":
                 username = handle_join(client_socket, username, message)
+            elif command == "quit":
+                #Go to finally block to handle QUIT command
+                break
+
             #Checks if registered
             elif username:
-                if command == "quit":
-                    #Go to finally block to handle QUIT command
-                    break
-                elif command == "list":
+                if command == "list":
                     command_directory[command](client_socket)
                 elif command in command_directory:
                     command_directory[command](client_socket, username, ' '.join(split_message[1:]))
