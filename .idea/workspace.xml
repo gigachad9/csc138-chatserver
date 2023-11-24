@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="added way to handle ungraceful disconnects, moved QUIT back to finally">
+    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="fixed mesg">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
     </list>
@@ -290,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700835545328</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="fixed mesg">
+      <created>1700836287092</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1700836287092</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -305,7 +312,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test" />
     <MESSAGE value="bcst method added" />
     <MESSAGE value="moved code around" />
     <MESSAGE value="handle_mesg work in progess" />
@@ -330,6 +336,7 @@
     <MESSAGE value="FINALLY fixed args check for JOIN" />
     <MESSAGE value="close client socket when quitting" />
     <MESSAGE value="added way to handle ungraceful disconnects, moved QUIT back to finally" />
-    <option name="LAST_COMMIT_MESSAGE" value="added way to handle ungraceful disconnects, moved QUIT back to finally" />
+    <MESSAGE value="fixed mesg" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed mesg" />
   </component>
 </project>
