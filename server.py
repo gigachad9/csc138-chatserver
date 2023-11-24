@@ -14,7 +14,7 @@ clients = {}
 
 # Manages communication with the client
 # Parameters inlcude the client socket and client address
-def handle_client(client_socket):
+def handle_client(client_socket, client_address):
     # This will hold a username
     username = None
     # This is dicitionary to hold the commands
@@ -40,6 +40,9 @@ def handle_client(client_socket):
             command = split_message[0].lower()
 
             if command == "join":
+                split_join = message.split()
+                if len(split_join) != 2:
+                    client_socket.send("Usage: JOIN <username>".encode())
                 username = handle_join(client_socket, username, message)
             elif command == "quit":
                 if username:
