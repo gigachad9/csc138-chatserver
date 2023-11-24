@@ -36,6 +36,7 @@ def handle_client(client_socket, client_address):
         # Infinite loop
         while True:
             message = client_socket.recv(1024).decode()
+            #disconnect client if empty message is received
             if not message:
                 break
             split_message = message.split()
@@ -53,7 +54,7 @@ def handle_client(client_socket, client_address):
                 elif command == "bcst":
                     command_directory[command](username, message)
                 elif command == "mesg":
-                    command_directory[command](client_socket, username, message)
+                    command_directory[command](client_socket, username, ' '.join(split_message[1:]))
                 # Send Unknown Message to client if the command isn't known
                 else:
                     client_socket.send("Unknown Message".encode())
@@ -113,7 +114,6 @@ def handle_list(client_socket):
 
 # Sends a message to all registered clients
 def handle_bcst(username, message):
-    print(message)  # test purposes delete later
     broadcast_message = message[5:]
 
     message_for_everyone = f"{username}: {broadcast_message}"
