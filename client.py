@@ -4,6 +4,7 @@
 
 import socket
 import sys
+import threading
 
 
 # @param client_socket
@@ -39,6 +40,9 @@ def create_client(svr_ip, svr_port):
     except Exception as e:
         print(f"Failed to connect to the server: {e}")
         sys.exit(1)
+
+    # Start a thread to listen to messages from the server
+    threading.Thread(target=receive_messages, args=(client_socket,), daemon=True).start()
 
     try:
         # Create loop for messages sent to the server
