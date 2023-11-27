@@ -71,7 +71,6 @@ def handle_client(client_socket, client_address):
     finally:
         # checks if client is registered and send messages if client is
         if username:
-            client_socket.send(f"{username} is quitting the chat server".encode())
             # delete client from database
             del clients[username]
             # send left message to remaining clients
