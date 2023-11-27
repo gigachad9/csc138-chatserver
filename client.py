@@ -27,7 +27,6 @@ def receive_messages(client_socket):
             # Exit loop
             break
     # CLose client socket and exit thread
-    print("Shutting Down Client, press Ctrl-C")
     client_socket.close()
 
 
