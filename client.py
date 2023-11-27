@@ -36,6 +36,8 @@ def receive_messages(client_socket):
 def create_client(svr_ip, svr_port):
     # create client socket
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    #hold username
+    username = None
 
     # attempt to connect to server, return failed to connect if connect fails
     try:
@@ -52,8 +54,14 @@ def create_client(svr_ip, svr_port):
         while True:
             message = input("")
 
+            if message.startswith("JOIN "):
+                message_split = message.split()
+                if len(message_split) == 2:
+                    username = message_split[1]
             # Break out of loop if user wants to quit
             if message == "QUIT":
+                client_socket.send(message.encode())
+                print(f"{username} is quitting the chat server")
                 break
 
             try:

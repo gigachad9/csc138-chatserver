@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="fixed bug in QUIT, now finished">
+    <list default="true" id="0590864a-2838-422e-9ea4-660f8ea27e9f" name="Changes" comment="removed unneeded line">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -318,7 +318,42 @@
       <option name="project" value="LOCAL" />
       <updated>1700842504451</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="fixed bcst">
+      <created>1700844644276</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1700844644276</updated>
+    </task>
+    <task id="LOCAL-00041" summary="clean up">
+      <created>1700844775990</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1700844775990</updated>
+    </task>
+    <task id="LOCAL-00042" summary="minor changes to match output to sample">
+      <created>1701051843428</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1701051843428</updated>
+    </task>
+    <task id="LOCAL-00043" summary="handle server shutdowns and minor changes">
+      <created>1701053587967</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1701053587967</updated>
+    </task>
+    <task id="LOCAL-00044" summary="removed unneeded line">
+      <created>1701054306868</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1701054306868</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -333,11 +368,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="handle_mesg finished" />
-    <MESSAGE value="fixed directory" />
-    <MESSAGE value="fixed list command" />
-    <MESSAGE value="server ip message" />
-    <MESSAGE value="now fixed list" />
     <MESSAGE value="fixed quit?" />
     <MESSAGE value="couple changes" />
     <MESSAGE value="testing old bcst" />
@@ -358,6 +388,11 @@
     <MESSAGE value="Finished Server" />
     <MESSAGE value="changed QUIT to case sensitive" />
     <MESSAGE value="fixed bug in QUIT, now finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bug in QUIT, now finished" />
+    <MESSAGE value="fixed bcst" />
+    <MESSAGE value="clean up" />
+    <MESSAGE value="minor changes to match output to sample" />
+    <MESSAGE value="handle server shutdowns and minor changes" />
+    <MESSAGE value="removed unneeded line" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed unneeded line" />
   </component>
 </project>
