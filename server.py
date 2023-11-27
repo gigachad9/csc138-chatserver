@@ -122,7 +122,6 @@ def handle_join(client_socket, username, message):
         client_socket.send(welcome_mess2.encode())
 
         return requested_username
-    return None
 
 
 # Sends a list of registered clients
